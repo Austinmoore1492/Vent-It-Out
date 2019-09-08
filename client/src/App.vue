@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div></div>
     <PostComponent />
   </div>
 </template>
@@ -26,5 +27,11 @@ export default {
 
 #app{
   font-family: 'Poppins', Arial;
+}
+
+@media(min-width: 2000px){
+  html {
+    font-size: 28px;
+  }
 }
 </style>

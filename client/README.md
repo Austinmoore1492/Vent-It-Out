@@ -1,5 +1,10 @@
 # Vent It Out
-> Initial Frontend 
+> Initial Frontend
+
+A place for people to say whats on their minds without worrying about being anonymous. 
+Lets make an outlet for everyone to be themselves!
+
+
 
 ## Project setup
 ```
@@ -25,6 +30,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

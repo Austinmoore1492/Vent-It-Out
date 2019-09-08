@@ -13,6 +13,7 @@
       </div>
       <hr>
       <p class="error" v-if="error">{{ error }}</p>
+      <p class="noPost">You need to add something to post</p>
       <div class="posts-container">
         <div class="post"
           v-for="(post, index) in posts"
@@ -22,7 +23,7 @@
           v-on:dblclick="deletePost(post._id)"
         >
           <span class="created-at">
-            {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}}
+            {{ `${post.createdAt.getMonth() + 1}/${post.createdAt.getDate()}/${post.createdAt.getFullYear()}`}}
             </span>
           <p class="text">{{ post.text }}</p>
         </div>
@@ -53,7 +54,9 @@ export default {
   methods: {
     async createPost() {
       if(this.text === ""){
-        console.log("Say Something")
+        const noPost = document.querySelector('.noPost')
+        noPost.style.opacity = 1
+        setTimeout(() => noPost.style.opacity = 0, 3000);
       } else {
         await PostService.insertPost(this.text);
         this.posts = await PostService.getPosts();
@@ -144,20 +147,24 @@ hr {
   margin: 1rem 0;
   background-image: linear-gradient(
     to right,
-    #42b883,
     #35495e,
-    #42b883
+    #42b883,
+    #35495e
   );
 }
 
-.error {
-  display: none; 
+.error, .noPost {
   border: 1px solid #a80004;
   background-color: #b52e31;
   color: #f0f0f0;
   padding: 5px;
   margin-bottom: 1rem;
   font-size: 1.5rem; 
+}
+
+.noPost {
+  opacity: 0;
+  font-size: 1rem;
 }
 
 .posts-container {
@@ -168,18 +175,18 @@ hr {
 
 .post {
   position: relative;
-  padding: 1rem;
-  padding-top: 2rem;
+  padding: 0.5rem;
+  padding-bottom: 2rem;
+  padding-right: 4rem;
   border: 2px solid #1d1d1d;
   background-color: #f0f0f0;
 }
 
 .created-at{
   position: absolute;
-  top: 0;
-  left: 0;
-  padding: 5px 15px;
-  background-color: #42b883;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
   color: #35495e;
   font-size: 0.8rem;
   font-weight: bold;
@@ -213,6 +220,7 @@ hr {
     position: static;
     display: block;
     padding-left: 0.5rem;
+    background: #42b883;
   }
   .text {
     padding: 1rem 0.5rem;
