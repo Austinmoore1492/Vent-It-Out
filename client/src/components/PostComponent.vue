@@ -8,7 +8,7 @@
     <div class="container">
       <div class="create-post">
         <label class="vent-class" for="create-post">Vent It Out...</label>
-        <input type="text" id="create-post" v-model="text" placeholder="Create a post">
+        <input type="text" id="create-post" v-on:keyup.enter="createPost" v-model="text" placeholder="Create a post">
         <button class="btn" v-on:click="createPost">Post!</button>
       </div>
       <hr>
