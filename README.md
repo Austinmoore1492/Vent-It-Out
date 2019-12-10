@@ -4,6 +4,8 @@
 A place for people to say whats on their minds without worrying about being anonymous. 
 Lets make an outlet for everyone to be themselves!
 
+## Live Site [Vent It Out](https://flw-vent-it-out.herokuapp.com/ "Vent It Out")
+
 
 
 ## Project setup
